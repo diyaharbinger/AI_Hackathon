@@ -1,6 +1,7 @@
 # Agentic Flow — Multi-Agent AI Content Generation & Synthesis System
 
 [![System Architecture](https://img.shields.io/badge/System-AGENT--101-blue.svg)](file:///d:/AI_Hackathon/Agentic_Flow_Project_Blueprint.md)
+[![Module A Status](https://img.shields.io/badge/Module%20A-100%25%20Completed-success.svg)](file:///d:/AI_Hackathon/MEMBER_A_SPECIFICATION.md)
 [![Module B Status](https://img.shields.io/badge/Module%20B-100%25%20Completed-success.svg)](file:///d:/AI_Hackathon/MEMBER_B_SPECIFICATION.md)
 [![Python Version](https://img.shields.io/badge/Python-3.11-blue.svg)](https://python.org)
 [![LLM Model](https://img.shields.io/badge/Groq%20LLM-gpt--oss--120b-orange.svg)](https://groq.com)
@@ -43,9 +44,17 @@ The system operates via a stateful 7-agent pipeline. **Module B** powers the cor
 
 ---
 
-## 💡 What Was Built (Module B Core Stack)
+## 💡 What Was Built (Module A & B Core Stack)
 
-### 1. Specialized Cognitive Agents (`backend/app/agents/cognitive/`)
+### 0. Topic Workspace Platform & Real-Time Gateway (Module A)
+* **Frontend UI (`frontend/`)**  
+  React-based tabbed workspace manager ensuring strict context isolation. Features include dynamic workspace creation, Reference File Drag-and-Drop Uploader, and a Human-in-the-Loop interactive Review Panel.
+* **FastAPI Gateway & Real-Time Stepper (`backend/app/api/`)**  
+  REST APIs for workspace creation and template uploads, integrated with WebSockets (`/stream`) to broadcast live agent progression frames to the React UI.
+* **MongoDB Atlas Hub (`backend/app/database/`)**  
+  Motor-driven asynchronous database connection storing `topic_workspaces`, `reference_templates`, and logs.
+
+### 1. Specialized Cognitive Agents (`backend/app/agents/cognitive/`) (Module B)
 * **Agent 1: Requirement Analysis Agent (`requirement_agent.py`)**  
   Parses user inputs, extracts target audience personas, core objectives, deliverables, and constraints into validated `StructuredRequirements` JSON objects.
 * **Agent 2: Planning Agent (`planning_agent.py`)**  
